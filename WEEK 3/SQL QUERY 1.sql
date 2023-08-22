@@ -39,16 +39,17 @@ FROM sakila.film ;
  FROM FILM
  limit 10;
  
- SELECT first_name
+ SELECT first_name,actor_id
  FROM ACTOR 
- WHERE first_name=  "SCARLETT";
+ WHERE first_name= "SCARLETT";
  
 
  SELECT  * FROM FILM
  WHERE title LIKE '%ARMAGEDDON%' AND  
 length> 100;
 
-SELECT * FROM film
+SELECT COUNT(film_id) 
+FROM film
 WHERE special_features LIKE '%Behind the Scenes%';
 
 #SELECT * FROM FILM;
