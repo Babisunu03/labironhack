@@ -31,24 +31,24 @@ ORDER BY TOTAL_REVENUE  ;
 
 #4 AVG RUNNING TIME FOR EACH CATEGORY
 
-SELECT name, category_id,avg(length) AS average_running_time
+SELECT name,round(avg(length),2) AS average_running_time
 FROM film_category
 INNER JOIN film
 USING (film_id)
 INNER JOIN category 
 USING(category_id) 
-GROUP BY category_id
+GROUP BY name
 ORDER BY NAME ;
 
 #5 FILM CATEGORY WITH LONGEST RUNNING TIME
 
-SELECT category_id,(avg(length)) AS longest_average_running_time
+SELECT category.name,round(avg(length),2) AS longest_average_running_time
 FROM film_category
 INNER JOIN film
 USING (film_id)
 INNER JOIN category 
 USING(category_id) 
-GROUP BY category_id
+GROUP BY category.name
 ORDER BY longest_average_running_time DESC ;
 
 #6 Display the top 10 most frequently rented movies in descending order.
@@ -73,7 +73,8 @@ JOIN inventory
 USING (film_id)
 JOIN store
 USING (store_id)
-WHERE title = "Academy Dinosaur" AND store_id = 1 ;
+WHERE title = "Academy Dinosaur" AND store_id = 1
+GROUP BY title ;
 
 #8 Provide a list of all distinct film titles, along with their availability status in the inventory. Include a column indicating whether each ti
 
